@@ -1,16 +1,14 @@
 ## The functions below calculate the inverse of a matrix and save the calculation
-## results to the cache. It creates a list with the following functions: set, get, 
-## setinverse, getinverse.
+## results to the cache. It creates a list with the following functions: set, get, setinverse, getinverse.
 ## Create a matrix object x and define the cache m  
 makeCacheMatrix <- function(x=matrix()) {
   m <- NULL
   set <- function(y) {
-    x <<- y ## specify the input matrix to the x variable
+    x <<- y 
     m <- NULL
   }
   get <- function() x ## return to the matrix x 
-  setinverse <- function(inverse)m ## set the cache m identical to the inverse
-  ## of the matrix x  
+  setinverse <- function(inverse)m ## set the cache m identical to the inverse of the matrix x  
   getinverse <-function()m ## return to the cached inverse of x
   list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
 }
@@ -27,8 +25,7 @@ cacheSolve <- function(x,...){
   x$setinverse(m)
   m
 }
-
-## Compute the inverse of a square matrix with the solve function
+## Compute the inverse of a square matrix with the solved function
 x <- matrix(c(3,1,6,5), nrow=2, ncol=2)
 y <- makeCacheMatrix(x)
 z <- cacheSolve(y, x)
@@ -40,5 +37,3 @@ z <- cacheSolve(y, x)
 print(z)
 m = y$get() %*% z
 print(m)
-
-
